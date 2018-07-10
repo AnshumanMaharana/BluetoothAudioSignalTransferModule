@@ -1,0 +1,23 @@
+static int c=0;
+static int sig=0;
+static int time1= millis();
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(38400);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int time2=millis();
+  if(time2-time1<10000){
+    while(Serial.available()>0) {
+    sig=Serial.read();
+    }
+  }
+  else {
+  Serial.end();
+  Serial.begin(38400);
+  Serial.println (c);
+  }
+}
